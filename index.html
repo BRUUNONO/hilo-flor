@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hilo &amp; Flor — Manualidades hechas a mano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FBF6F3;
+    --card: #F4E7E1;
+    --rose: #C88A9B;
+    --rose-deep: #A96A80;
+    --sage: #8FA085;
+    --ink: #3B2A2E;
+    --ink-soft: #6E5A5C;
+    --line: #E4CFC9;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background-color:var(--bg);
+    background-image: radial-gradient(circle, #E9CFC7 1.4px, transparent 1.4px);
+    background-size: 22px 22px;
+    color:var(--ink);
+    font-family:'Jost', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+  }
+  h1,h2,h3, .serif{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    margin:0;
+    color:var(--ink);
+  }
+  a{color:inherit;}
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* NAV */
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:22px 28px;
+    max-width:1080px;
+    margin:0 auto;
+  }
+  .brand{
+    font-family:'Cormorant Garamond', serif;
+    font-size:26px;
+    font-weight:600;
+    letter-spacing:0.5px;
+  }
+  .brand em{font-style:italic; color:var(--rose-deep);}
+  nav .links{
+    display:flex;
+    gap:32px;
+    font-size:14px;
+  }
+  nav .links a{
+    text-decoration:none;
+    color:var(--ink-soft);
+    border-bottom:1px solid transparent;
+    padding-bottom:3px;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  nav .links a:hover{color:var(--rose-deep); border-color:var(--rose-deep);}
+
+  /* HERO */
+  .hero{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap:50px;
+    align-items:center;
+    padding:40px 28px 90px;
+    max-width:1080px;
+    margin:0 auto;
+  }
+  .hero-text{
+    border:1px solid var(--line);
+    background:rgba(255,255,255,0.6);
+    padding:36px 34px;
+  }
+  .hero .eyebrow{
+    font-size:15px;
+    color:var(--sage);
+    font-style:italic;
+    font-family:'Cormorant Garamond', serif;
+    margin-bottom:14px;
+  }
+  .hero h1{
+    font-size:56px;
+    line-height:1.08;
+    letter-spacing:0.2px;
+  }
+  .hero p.lede{
+    font-size:17px;
+    color:var(--ink-soft);
+    max-width:420px;
+    margin:22px 0 30px;
+  }
+  .cta-row{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    padding:13px 26px;
+    border-radius:2px;
+    font-size:14px;
+    letter-spacing:0.3px;
+    text-decoration:none;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary{
+    background:var(--rose-deep);
+    color:#fff;
+  }
+  .btn-primary:hover{transform:translateY(-1px); box-shadow:0 8px 18px rgba(169,106,128,0.35);}
+  .btn-ghost{
+    border:1px solid var(--ink);
+    color:var(--ink);
+  }
+  .btn-ghost:hover{background:var(--ink); color:#fff;}
+
+  .hero-visual{
+    position:relative;
+    aspect-ratio: 4/5;
+  }
+  .hero-visual .frame{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(160deg, var(--card), #EFDCD5);
+    border-radius:2px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:30px;
+  }
+  .hero-visual .frame span{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    color:var(--ink-soft);
+    font-size:16px;
+  }
+  .hero-visual .tag{
+    position:absolute;
+    bottom:-18px;
+    left:-18px;
+    background:var(--sage);
+    color:#fff;
+    padding:14px 20px;
+    font-size:13px;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    box-shadow:0 10px 24px rgba(0,0,0,0.12);
+  }
+
+  /* SECTION HEADERS */
+  .section-head{
+    max-width:520px;
+    margin:0 auto 46px;
+    text-align:center;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:22px 20px;
+    background:rgba(255,255,255,0.55);
+  }
+  .section-head h2{font-size:38px;}
+  .section-head p{color:var(--ink-soft); font-size:15px; margin-top:10px;}
+
+  section.products{padding:70px 0;}
+  section.products.alt{background:#F6EEE9;}
+  .section-panel{
+    border:1px solid var(--line);
+    background:#fff;
+    padding:50px 40px;
+    box-shadow:0 18px 40px rgba(59,42,46,0.06);
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+  }
+  .card{
+    background:#fff;
+    border:1px solid var(--line);
+    display:flex;
+    flex-direction:column;
+  }
+  .ph{
+    aspect-ratio:1/1;
+    background:repeating-linear-gradient(135deg, var(--card), var(--card) 12px, #EFE1DA 12px, #EFE1DA 24px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--ink-soft);
+    font-size:13px;
+    font-style:italic;
+    font-family:'Cormorant Garamond', serif;
+    text-align:center;
+    padding:14px;
+  }
+  .card .photo{
+    aspect-ratio:1/1;
+    width:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .card-body{padding:20px 22px 24px;}
+  .card-body h3{font-size:22px; margin-bottom:6px;}
+  .card-body p{font-size:14px; color:var(--ink-soft); margin:0 0 14px;}
+  .price{
+    font-family:'Cormorant Garamond', serif;
+    font-size:19px;
+    color:var(--rose-deep);
+    font-style:italic;
+  }
+
+  /* ABOUT STRIP */
+  .strip{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:24px;
+    padding:60px 0;
+    text-align:center;
+  }
+  .strip div{
+    border:1px solid var(--line);
+    background:#fff;
+    padding:30px 24px;
+    box-shadow:0 14px 30px rgba(59,42,46,0.05);
+  }
+  .strip div h3{font-size:24px; margin-bottom:10px;}
+  .strip div p{font-size:14px; color:var(--ink-soft); max-width:260px; margin:0 auto;}
+
+  /* CONTACT */
+  .contact{
+    background:var(--ink);
+    color:#F7EDE9;
+    padding:80px 28px;
+    text-align:center;
+  }
+  .contact h2{color:#fff; font-size:40px;}
+  .contact p{color:#D9C6C0; max-width:440px; margin:16px auto 30px; font-size:15px;}
+  .contact .btn-primary{background:var(--rose);}
+
+  footer{
+    text-align:center;
+    padding:30px 28px;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+
+  @media (max-width:840px){
+    nav .links{display:none;}
+    .hero{grid-template-columns:1fr; padding-top:20px;}
+    .hero h1{font-size:40px;}
+    .hero-visual{margin-top:10px;}
+    .grid{grid-template-columns:1fr 1fr;}
+    .strip{grid-template-columns:1fr; gap:34px;}
+  }
+  @media (max-width:520px){
+    .grid{grid-template-columns:1fr;}
+    .hero h1{font-size:34px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">Hilo <em>&amp; Flor</em></div>
+  <div class="links">
+    <a href="#pulseras">Pulseras</a>
+    <a href="#chenille">Flores</a>
+    <a href="#cojines">Cojines</a>
+    <a href="#joyeria">Joyería</a>
+    <a href="#navidad">Navidad</a>
+    <a href="#peluches">Peluches</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-text">
+    <div class="eyebrow">Hecho a mano, pieza por pieza</div>
+    <h1>Detalles que se notan,<br>hechos con cariño.</h1>
+    <p class="lede">Pulseras, flores de chenille, cojines personalizados y joyería — cada pieza tejida y armada a mano, pensada para regalar o para ti.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#contacto">Hacer un pedido</a>
+      <a class="btn btn-ghost" href="#pulseras">Ver catálogo</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="frame" style="background-image:url('girasol-chenille.jpeg'); background-size:cover; background-position:center;"></div>
+    <div class="tag">100% artesanal</div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="strip">
+    <div>
+      <h3>Materiales de calidad</h3>
+      <p>Hilos, chenille y bases seleccionadas para que cada pieza dure.</p>
+    </div>
+    <div>
+      <h3>Personalización</h3>
+      <p>Nombres, iniciales, colores y tamaños a tu gusto.</p>
+    </div>
+    <div>
+      <h3>Entrega en Lima</h3>
+      <p>Coordinamos por WhatsApp el punto y la fecha de entrega.</p>
+    </div>
+  </div>
+</div>
+
+<section class="products" id="pulseras">
+  <div class="wrap">
+    <div class="section-panel">
+    <div class="section-head">
+      <h2>Pulseras</h2>
+      <p>Diseños delicados, tejidos a mano, con opción de iniciales o dijes.</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="ph">Foto próximamente</div>
+        <div class="card-body">
+          <h3>Pulsera clásica</h3>
+          <p>Hilo encerado, diseño simple y versátil.</p>
+          <div class="price">Desde S/ 12</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph">Foto próximamente</div>
+        <div class="card-body">
+          <h3>Pulsera con inicial</h3>
+          <p>Personalizada con letra o dije a elección.</p>
+          <div class="price">Desde S/ 18</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph">Foto próximamente</div>
+        <div class="card-body">
+          <h3>Set de 3 pulseras</h3>
+          <p>Combinación de colores para regalo.</p>
+          <div class="price">Desde S/ 35</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section class="products alt" id="chenille">
+  <div class="wrap">
+    <div class="section-panel">
+    <div class="section-head">
+      <h2>Flores de chenille</h2>
+      <p>Ramos y flores sueltas, suaves al tacto, ideales como detalle o decoración.</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <img class="photo" src="girasol-chenille.jpeg" alt="Girasol de chenille en macetero con lazo">
+        <div class="card-body">
+          <h3>Maceta con girasol</h3>
+          <p>Girasol de chenille con detalles y lazo, en macetero decorado.</p>
+          <div class="price">Desde S/ 25</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph">Foto próximamente</div>
+        <div class="card-body">
+          <h3>Ramo pequeño (5 flores)</h3>
+          <p>Colores a elección, envuelto para regalo.</p>
+          <div class="price">Desde S/ 35</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph">Foto próximamente</div>
+        <div class="card-body">
+          <h3>Ramo grande (personalizado)</h3>
+          <p>Cantidad y colores a coordinar.</p>
+          <div class="price">Cotizar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section class="products" id="cojines">
+  <div class="wrap">
+    <div class="section-panel">
+    <div class="section-head">
+      <h2>Cojines personalizados</h2>
+      <p>Con nombre, foto o diseño a pedido — perfectos para regalo o decoración.</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="ph">Foto próximamente</div>
+        <div class="card-body">
+          <h3>Cojín con nombre</h3>
+          <p>Bordado o estampado, varios colores de base.</p>
+          <div class="price">Desde S/ 45</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph">Foto próximamente</div>
+        <div class="card-body">
+          <h3>Cojín con foto</h3>
+          <p>Impresión de alta calidad, funda desmontable.</p>
+          <div class="price">Desde S/ 55</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph">Foto próximamente</div>
+        <div class="card-body">
+          <h3>Set de 2 cojines</h3>
+          <p>Diseño a juego, ideal para pareja o sala.</p>
+          <div class="price">Desde S/ 95</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section class="products alt" id="joyeria">
+  <div class="wrap">
+    <div class="section-panel">
+    <div class="section-head">
+      <h2>Joyería</h2>
+      <p>Aretes, collares y anillos hechos a mano con materiales delicados.</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="ph">Foto próximamente</div>
+        <div class="card-body">
+          <h3>Aretes artesanales</h3>
+          <p>Diseños ligeros, varios estilos disponibles.</p>
+          <div class="price">Desde S/ 15</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph">Foto próximamente</div>
+        <div class="card-body">
+          <h3>Collar delicado</h3>
+          <p>Cadena fina con dije a elección.</p>
+          <div class="price">Desde S/ 25</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph">Foto próximamente</div>
+        <div class="card-body">
+          <h3>Set aretes + collar</h3>
+          <p>Combo a juego, ideal para regalo.</p>
+          <div class="price">Desde S/ 38</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section class="products" id="navidad">
+  <div class="wrap">
+    <div class="section-panel">
+    <div class="section-head">
+      <h2>Decoraciones navideñas</h2>
+      <p>Piezas de tela y fieltro hechas a mano para vestir la mesa en Navidad.</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <img class="photo" src="cubiertos-navidenos-1.jpeg" alt="Set de portacubiertos navideños con personajes">
+        <div class="card-body">
+          <h3>Set portacubiertos navideños</h3>
+          <p>7 diseños: reno, pingüino, papá noel, muñeco de nieve y más.</p>
+          <div class="price">Cotizar por set</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="photo" src="camino-mesa-navideno.jpeg" alt="Camino de mesa navideño con muñeco de nieve">
+        <div class="card-body">
+          <h3>Camino de mesa</h3>
+          <p>Diseño de muñeco de nieve, bordes en verde y dorado.</p>
+          <div class="price">Cotizar</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="photo" src="cojin-santa-estrella.jpeg" alt="Cojín en forma de estrella con diseño de papá noel">
+        <div class="card-body">
+          <h3>Cojín Santa estrella</h3>
+          <p>Forma de estrella, diseño de papá noel con muñecos de nieve.</p>
+          <div class="price">Cotizar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section class="products alt" id="peluches">
+  <div class="wrap">
+    <div class="section-panel">
+    <div class="section-head">
+      <h2>Peluches y decoración</h2>
+      <p>Figuras y peluches personalizados para fechas especiales.</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <img class="photo" src="peluche-gato-halloween.jpeg" alt="Gato negro de peluche con sombrero de bruja y calabaza, decoración de Halloween">
+        <div class="card-body">
+          <h3>Gato de Halloween</h3>
+          <p>Con sombrero de bruja, moño y calabaza — decoración de temporada.</p>
+          <div class="price">Cotizar</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="photo" src="peluche-osito.jpeg" alt="Osito de peluche con overol rojo y detalles de corazones">
+        <div class="card-body">
+          <h3>Osito con overol</h3>
+          <p>Peluche con ropa y detalles de corazones, ideal para regalo.</p>
+          <div class="price">Cotizar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<div class="contact" id="contacto">
+  <h2>¿Quieres hacer un pedido?</h2>
+  <p>Escríbeme por WhatsApp contándome qué producto te interesa, color y para cuándo lo necesitas.</p>
+  <a class="btn btn-primary" href="https://wa.me/51957263786" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+</div>
+
+<footer>
+  Hilo &amp; Flor — manualidades hechas a mano en Lima, Perú.
+</footer>
+
+</body>
+</html>
